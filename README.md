@@ -2,7 +2,7 @@
 
  Submission Aplikasi Web Menggunakan React - Kelas Belajar Membuat Aplikasi Web dengan React Oleh Dicoding
 
-🗒️ [Sertifikat Kompetensi Kelas Belajar Membuat Aplikasi Web dengan React](https://www.dicoding.com/certificates/XXXXXX)
+🗒️ [Sertifikat Kompetensi Kelas Belajar Membuat Aplikasi Web dengan React](https://www.dicoding.com/certificates/GRX52JR33X0M)
 
 ## 🚀 Deskripsi Kelas
 
