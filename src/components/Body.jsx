@@ -43,7 +43,6 @@ const AppBody = ({notes, addNewNote, onDelete, onArchive}) => {
       <button className="note-body__add-note-button"
         onClick={openModal}>Add new note</button>
 
-      {/* Modal for adding new notes */}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
