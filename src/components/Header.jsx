@@ -1,5 +1,5 @@
 import React from "react";
-import SearchBar from "./HeaderSearch";
+import SearchBar from "./SearchBar";
 
 const Header = ({ onSearch }) => {
     return (
