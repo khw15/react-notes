@@ -1,6 +1,7 @@
 import React from 'react';
 import {ToastContainer, toast} from 'react-toastify';
 import {getInitialData} from '../utils/data';
+import Swal from 'sweetalert2';
 
 import AppBody from './Body';
 import Header from './Header';
@@ -41,19 +42,32 @@ class NotesApp extends React.Component {
   }
 
   handleNoteDeletion(id) {
-    const result = window.confirm('Are you sure you want to delete this?');
-    if (result) {
-      this.setState((prevState) => {
-        return {
-          notes: prevState.notes.filter((note) => note.id !== id),
-          unfilteredNotes:
-          prevState.unfilteredNotes.filter((note) => note.id !== id),
-        };
-      });
-      toast.success('Note deleted!');
-    } else {
-      toast.error('Deletion cancelled!');
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      customClass: {
+        confirmButton: 'delete-button',
+        cancelButton: 'cancel-button',
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.setState((prevState) => {
+          return {
+            notes: prevState.notes.filter((note) => note.id !== id),
+            unfilteredNotes: prevState.unfilteredNotes.filter((note) =>
+              note.id !== id),
+          };
+        });
+        toast.success('Note deleted!');
+      } else {
+        toast.error('Deletion cancelled!');
+      }
+    });
   }
 
   handleNoteArchive(id) {
