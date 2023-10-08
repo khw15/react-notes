@@ -16,7 +16,7 @@ input,
 textarea {
   padding: 12px;
   margin: 12px 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   background-color: transparent;
   color: white;
   border: 1px solid #aaa;
@@ -114,7 +114,7 @@ textarea::placeholder {
   width: 100%;
   padding: 8px;
   background-color: transparent;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   color: #ccc;
   border: 1px solid #aaa;
   border-radius: 4px;
@@ -186,7 +186,7 @@ textarea::placeholder {
   border: 0;
   border-top: 1px solid #aaa;
   padding: 8px 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   cursor: pointer;
 }
@@ -228,7 +228,7 @@ textarea::placeholder {
   background-color: transparent;
   padding: 12px 10px;
   margin-bottom: 50px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   cursor: pointer;
 }
