@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({onSearch}) => {
   const handleInputChange = (event) => {
     const searchTerm = event.target.value;
     onSearch(searchTerm);

@@ -1,11 +1,11 @@
-import React from "react";
-import { showFormattedDate } from "../utils/data";
+import React from 'react';
+import {showFormattedDate} from '../utils/data';
 
-const NoteItem = ({ note, onDelete, onArchive }) => {
+const NoteItem = ({note, onDelete, onArchive}) => {
   const handleDelete = () => onDelete(note.id);
   const handleArchive = () => onArchive(note.id);
 
-  const archiveButtonText = note.archived ? "Unarchive" : "Archive";
+  const archiveButtonText = note.archived ? 'Unarchive' : 'Archive';
 
   return (
     <div className="note-item">
