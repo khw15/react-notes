@@ -15,12 +15,12 @@ const NotesInput = ({ addNewNote, closeModal }) => {
     });
 
     const onTitleChange = (event) => {
-        event.preventDefault();
-        if (event.target.value.length <= 50) {
+        const title = event.target.value;
+        if (title.length <= 50) {
             setFormData({
                 ...formData,
-                [event.target.name]: event.target.value,
-                noteBodyLength: event.target.value.length
+                title,
+                noteBodyLength: title.length
             })
         } else {
             toast.error('Max length for note body is 50', { toastId: toastId1 });
@@ -28,13 +28,12 @@ const NotesInput = ({ addNewNote, closeModal }) => {
     }
 
     const onBodyChange = (event) => {
-        event.preventDefault();
+        const noteBody = event.target.value;
         setFormData({
             ...formData,
-            [event.target.name]: event.target.value
+            noteBody
         })
     }
-
 
     const onSubmitForm = (event) => {
         event.preventDefault();
@@ -68,11 +67,11 @@ const NotesInput = ({ addNewNote, closeModal }) => {
 
     return (
         <div className="note-input">
-            <i className="note-input__title__closebuton" onClick={closeModal}>
+            <i className="note-input__close-button" onClick={closeModal}>
                 <FontAwesomeIcon icon={faTimes} />
             </i>
-            <h2 className="note-input__title__note">Take Note</h2>
-            <form>
+            <h2 className="note-input__title">Take Note</h2>
+            <form onSubmit={onSubmitForm}>
                 <h3>Title</h3>
                 <input
                     className="note-input__title"
@@ -83,18 +82,18 @@ const NotesInput = ({ addNewNote, closeModal }) => {
                     value={formData.title}
                     onChange={onTitleChange}
                 />
-                <p className="note-input__title__char-limit">Character left: {50 - formData.noteBodyLength}</p>
+                <p className="note-input__char-limit">Characters left: {50 - formData.noteBodyLength}</p>
                 <h3>Notes</h3>
                 <textarea
                     className="note-input__body"
-                    type="text"
                     name="noteBody"
                     placeholder="Your notes here ..."
                     required
                     value={formData.noteBody}
                     onChange={onBodyChange}
+                    maxLength={500} // Example maxLength
                 ></textarea>
-                <button type="submit" onClick={onSubmitForm}>Add note</button>
+                <button type="submit">Add note</button>
             </form>
         </div>
     )

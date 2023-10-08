@@ -15,48 +15,48 @@ class NotesApp extends React.Component {
         this.state = {
             notes: getInitialData(),
             unfilteredNotes: getInitialData()
-        }
+        };
+
         autoBind(this);
     }
 
-    addNewNoteHandler(newNoteData) {
+    handleAddNewNote(newNoteData) {
         try {
             this.setState((prevState) => {
                 return {
-                    notes: [ newNoteData, ...prevState.notes, ],
-                    unfilteredNotes: [ newNoteData, ...prevState.unfilteredNotes, ]
-                }
-            })
+                    notes: [newNoteData, ...prevState.notes],
+                    unfilteredNotes: [newNoteData, ...prevState.unfilteredNotes]
+                };
+            });
             return {
                 error: false,
                 message: 'Success!'
-            }
-        }
-        catch (error) {
+            };
+        } catch (error) {
             return {
                 error: true,
                 message: 'Failed!'
-            }
+            };
         }
     }
 
-    onDeleteHandler(id) {
+    handleNoteDeletion(id) {
         const result = window.confirm('Are you sure you want to delete this?');
         if (result) {
             this.setState((prevState) => {
                 return {
                     notes: prevState.notes.filter(note => note.id !== id),
-                    unfilteredNotes: prevState.unfilteredNotes.filter(note => note.id !== id),
-                }
-            })
+                    unfilteredNotes: prevState.unfilteredNotes.filter(note => note.id !== id)
+                };
+            });
             toast.success('Note deleted!');
         } else {
             toast.error('Deletion cancelled!');
         }
     }
 
-    onArchiveHandler(id) {
-        const noteToModify = this.state.unfilteredNotes.filter(note => note.id === id)[0];
+    handleNoteArchive(id) {
+        const noteToModify = this.state.unfilteredNotes.find(note => note.id === id);
         const modifiedNote = { ...noteToModify, archived: !noteToModify.archived };
         this.setState((prevState) => {
             return {
@@ -67,8 +67,8 @@ class NotesApp extends React.Component {
                 unfilteredNotes: [
                     ...prevState.unfilteredNotes.filter(note => note.id !== id),
                     modifiedNote
-                ],
-            }
+                ]
+            };
         });
         if (noteToModify.archived) {
             toast.success('Note moved to active!');
@@ -77,23 +77,28 @@ class NotesApp extends React.Component {
         }
     }
 
-    onSearchHandler(text) {
+    handleNoteSearch(text) {
         if (text.length !== 0 && text.trim() !== '') {
             this.setState({
-                notes: this.state.unfilteredNotes.filter(note => note.title.toLowerCase().includes(text.toLowerCase())),
-            })
+                notes: this.state.unfilteredNotes.filter(note => note.title.toLowerCase().includes(text.toLowerCase()))
+            });
         } else {
             this.setState({
-                notes: this.state.unfilteredNotes,
-            })
+                notes: this.state.unfilteredNotes
+            });
         }
     }
     
     render() {
         return (
             <div>
-                <Header onSearch={this.onSearchHandler}/>
-                <AppBody notes={this.state.notes} addNewNote={this.addNewNoteHandler} onDelete={this.onDeleteHandler} onArchive={this.onArchiveHandler} />
+                <Header onSearch={this.handleNoteSearch}/>
+                <AppBody
+                    notes={this.state.notes}
+                    addNewNote={this.handleAddNewNote}
+                    onDelete={this.handleNoteDeletion}
+                    onArchive={this.handleNoteArchive}
+                />
                 <Footer />
                 <ToastContainer 
                     position="top-right"
@@ -107,7 +112,7 @@ class NotesApp extends React.Component {
                     pauseOnHover
                 />
             </div>
-        )
+        );
     }
 }
 
