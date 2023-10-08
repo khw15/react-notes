@@ -6,7 +6,7 @@ Kumpulan submission pada learning path [React Developer](https://www.dicoding.co
 
 Repositori digunakan sebagai sarana penyimpanan dan version control dari setiap submission di learning path [React Developer](https://www.dicoding.com/learningpaths/58)
 
-Setiap kelas dan submission akan memiliki branch yang berbeda dan memiliki nama yang berasal dari nama kelas di Dicoding (misal: Belajar Membuat Aplikasi Web dengan React => BMAWdR - Submission 1/2/dst)
+Setiap submission dari learning path [React Developer](https://www.dicoding.com/learningpaths/58) akan memiliki branch yang berbeda dan memiliki inisial yang berasal dari nama kelas di Dicoding (misal: Belajar Membuat Aplikasi Web dengan React => BMAWdR - Submission 1/2/dst)
 
 ### Daftar branch
 [Main branch](https://github.com/khw15/react-notes), yang kamu liat saat ini, digunakan sebagai branch yang akan di-deploy dengan Netlify di [alamat ini](https://dicatatin.netlify.app/)<br>
