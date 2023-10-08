@@ -256,4 +256,9 @@ textarea::placeholder {
 
 .swal2-popup, .delete-button, .cancel-button {
   font-family: 'Quicksand', sans-serif;
+  color: white;
+}
+
+.custom-popup {
+  background-color: #202124;
 }

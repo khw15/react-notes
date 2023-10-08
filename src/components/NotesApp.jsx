@@ -51,6 +51,7 @@ class NotesApp extends React.Component {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
       customClass: {
+        popup: 'custom-popup',
         confirmButton: 'delete-button',
         cancelButton: 'cancel-button',
       },
