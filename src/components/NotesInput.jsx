@@ -70,11 +70,11 @@ const NotesInput = ({addNewNote, closeModal}) => {
       <i className="note-input__close-button" onClick={closeModal}>
         <FontAwesomeIcon icon={faTimes} />
       </i>
-      <h2 className="note-input__title">Take Note</h2>
+      <h2 className="note-input__title">Write a Note</h2>
       <form onSubmit={onSubmitForm}>
         <h3>Title</h3>
         <input
-          className="note-input__title"
+          className="note-title__title"
           type="text"
           name="title"
           placeholder="Title"

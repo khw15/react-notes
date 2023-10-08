@@ -13,7 +13,8 @@ const NotesList = ({notesList, onDelete, onArchive}) => {
                     ))
                   }
                 </div> :
-                <p className="notes-list__empty-message">No notes here.</p>
+                <p className="notes-list__empty-message">
+                  There&apos;s no archived notes here</p>
       }
     </>
   );

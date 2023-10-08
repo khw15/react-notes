@@ -70,8 +70,13 @@ textarea::placeholder {
   width: 100%;
 }
 
+.note-title__title {
+  font-weight: bold;
+}
+
 .note-input__title {
   font-weight: bold;
+  text-align: center;
 }
 
 .note-input__title__closebuton {

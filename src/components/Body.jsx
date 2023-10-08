@@ -58,7 +58,7 @@ const AppBody = ({notes, addNewNote, onDelete, onArchive}) => {
       <NotesList notesList={notes.filter((note) => !note.archived)}
         onDelete={onDelete} onArchive={onArchive} />
 
-      <h2>Archive</h2>
+      <h2>Archived Notes</h2>
       <NotesList notesList={notes.filter((note) => note.archived)}
         onDelete={onDelete} onArchive={onArchive} />
     </div>
