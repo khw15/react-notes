@@ -12,6 +12,18 @@ function NotesIdPageAction({
   handleArchive,
   handleDelete
 }) {
+  const showToast = (message, icon, position) => {
+    Swal.mixin({
+      toast: true,
+      position: position,
+      showConfirmButton: false,
+      timer: 3000
+    }).fire({
+      icon: icon,
+      title: message
+    })
+  }
+
   const confirmDelete = () => {
     Swal.fire({
       title: 'Are you sure?',
@@ -28,9 +40,12 @@ function NotesIdPageAction({
     }).then((result) => {
       if (result.isConfirmed) {
         handleDelete()
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        showToast('Note deletion canceled', 'info', 'bottom-start')
       }
     })
   }
+
   const confirmArchive = () => {
     Swal.fire({
       title: 'Are you sure?',
@@ -47,6 +62,8 @@ function NotesIdPageAction({
     }).then((result) => {
       if (result.isConfirmed) {
         handleArchive()
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        showToast('Archiving canceled', 'info', 'bottom-start')
       }
     })
   }
@@ -82,7 +99,6 @@ function NotesIdPageAction({
     </PageAction>
   )
 }
-
 
 NotesIdPageAction.propTypes = {
   archived: PropTypes.bool.isRequired,

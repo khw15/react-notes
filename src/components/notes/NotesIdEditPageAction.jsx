@@ -5,6 +5,18 @@ import PageAction from '../layout/PageAction'
 import Swal from 'sweetalert2'
 
 function NotesIdEditPageAction({handleSave}) {
+  const showToast = (message, icon, position) => {
+    Swal.mixin({
+      toast: true,
+      position: position,
+      showConfirmButton: false,
+      timer: 3000
+    }).fire({
+      icon: icon,
+      title: message
+    })
+  }
+
   const confirmSave = () => {
     Swal.fire({
       title: 'Are you sure?',
@@ -21,6 +33,8 @@ function NotesIdEditPageAction({handleSave}) {
     }).then((result) => {
       if (result.isConfirmed) {
         handleSave()
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        showToast('Note save canceled', 'info', 'bottom-start')
       }
     })
   }
