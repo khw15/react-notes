@@ -8,6 +8,7 @@ import draftToHtml from 'draftjs-to-html'
 import AddNewPageAction from '../../components/notes/AddNewPageAction'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import {addNote} from '../../utils/local-data'
+import Swal from 'sweetalert2'
 
 export default function NotesNewPages() {
   const navigate = useNavigate()
@@ -34,6 +35,18 @@ export default function NotesNewPages() {
     const body = draftToHtml(convertToRaw(form.body.getCurrentContent()))
     addNote({title, body})
     navigate('/')
+
+    const successToast = Swal.mixin({
+      toast: true,
+      position: 'bottom-start',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
+    successToast.fire({
+      icon: 'success',
+      title: 'Note Saved!'
+    })
   }
 
   return (
