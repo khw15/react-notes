@@ -304,3 +304,10 @@ main {
   cursor: pointer;
   color: var(--on-background);
 }
+
+/* Swal Custom Class */
+
+.swal-cancel-button, .swal-confirm-button {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 28px;
+}

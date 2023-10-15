@@ -13,7 +13,11 @@ function NotesIdEditPageAction({handleSave}) {
       showCancelButton: true,
       confirmButtonText: 'Yes, save it',
       cancelButtonText: 'Cancel',
-      confirmButtonColor: '#d33'
+      confirmButtonColor: '#d33',
+      customClass: {
+        confirmButton: 'swal-confirm-button',
+        cancelButton: 'swal-cancel-button'
+      }
     }).then((result) => {
       if (result.isConfirmed) {
         handleSave()

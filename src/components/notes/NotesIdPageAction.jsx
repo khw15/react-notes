@@ -20,7 +20,11 @@ function NotesIdPageAction({
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it',
       cancelButtonText: 'Cancel',
-      confirmButtonColor: '#d33'
+      confirmButtonColor: '#d33',
+      customClass: {
+        confirmButton: 'swal-confirm-button',
+        cancelButton: 'swal-cancel-button'
+      }
     }).then((result) => {
       if (result.isConfirmed) {
         handleDelete()
@@ -35,7 +39,11 @@ function NotesIdPageAction({
       showCancelButton: true,
       confirmButtonText: 'Yes, archive it',
       cancelButtonText: 'Cancel',
-      confirmButtonColor: '#d33'
+      confirmButtonColor: '#d33',
+      customClass: {
+        confirmButton: 'swal-confirm-button',
+        cancelButton: 'swal-cancel-button'
+      }
     }).then((result) => {
       if (result.isConfirmed) {
         handleArchive()
