@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from "react";
-import { capitalizeFirstLetter } from "../../utils";
+import React, {useEffect, useState} from 'react'
+import {capitalizeFirstLetter} from '../../utils'
 
 function ThemeToggler() {
-    const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState('dark')
 
-const changeTheme = (val) => {
+  const changeTheme = (val) => {
     setTheme(val)
-    const root = window.document.documentElement;
+    const root = window.document.documentElement
     root.setAttribute('data-theme', val)
     localStorage.setItem('theme', val)
-};
+  }
 
-useEffect(() => {
+  useEffect(() => {
     if (localStorage.theme) {
       changeTheme(localStorage.theme)
     } else {
@@ -30,6 +30,6 @@ useEffect(() => {
       Theme
     </button>
   )
-};
+}
 
-export default ThemeToggler;
+export default ThemeToggler

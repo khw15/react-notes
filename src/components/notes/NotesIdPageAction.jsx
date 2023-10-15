@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { HiOutlineTrash } from 'react-icons/hi'
-import { BiArchiveIn, BiArchiveOut } from 'react-icons/bi'
-import { AiOutlineEdit } from 'react-icons/ai'
+import {HiOutlineTrash} from 'react-icons/hi'
+import {BiArchiveIn, BiArchiveOut} from 'react-icons/bi'
+import {AiOutlineEdit} from 'react-icons/ai'
 import PageAction from '../layout/PageAction'
 
 function NotesIdPageAction({

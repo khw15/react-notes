@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import HomepageAction from '../components/index/HomePageAction'
 import NoteListEmpty from '../components/notes/NoteListEmpty'
 import NotesList from '../components/notes/NotesList'
-import { getActiveNotes } from '../utils/local-data'
+import {getActiveNotes} from '../utils/local-data'
 
 export default function IndexPage() {
   const [notes, setNotes] = useState([])
@@ -15,8 +15,9 @@ export default function IndexPage() {
   useEffect(() => {
     if (search !== '') {
       setNotes(
-        getActiveNotes()
-          .filter((note) => note.title.toLowerCase().includes(search.toLowerCase()))
+          getActiveNotes()
+              .filter((note) => note.title.toLowerCase()
+                  .includes(search.toLowerCase()))
       )
     } else {
       setNotes(getActiveNotes())

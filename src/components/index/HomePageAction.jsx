@@ -1,6 +1,6 @@
-import React from 'react';
-import { HiPlus } from 'react-icons/hi'
-import { useNavigate } from 'react-router-dom'
+import React from 'react'
+import {HiPlus} from 'react-icons/hi'
+import {useNavigate} from 'react-router-dom'
 import PageAction from '../layout/PageAction'
 
 export default function HomePageAction() {

@@ -4,7 +4,7 @@ import NoteItemTitle from './note-item/NoteItemTitle'
 import NoteItemTimestamp from './note-item/NoteItemTimestamp'
 import NoteItemBody from './note-item/NoteItemBody'
 
-function NoteItem({ note }) {
+function NoteItem({note}) {
   return (
     <article className="note-item">
       <NoteItemTitle

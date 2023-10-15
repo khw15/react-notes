@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
-function NoteItemTitle({ id, title }) {
+function NoteItemTitle({id, title}) {
   return (
     <h3 className="note-item__title">
       <Link

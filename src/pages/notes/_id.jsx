@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import parser from 'html-react-parser'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import { HiArrowLeft } from 'react-icons/hi'
-import { showFormattedDate } from '../../utils'
+import {Link, useNavigate, useParams} from 'react-router-dom'
+import {HiArrowLeft} from 'react-icons/hi'
+import {showFormattedDate} from '../../utils'
 import {
   archiveNote, deleteNote, getNote, unarchiveNote
 } from '../../utils/local-data'
@@ -11,7 +11,7 @@ import NotFoundMessage from '../../components/layout/NotFoundMessage'
 
 export default function NotesIdPages() {
   const [note, setNote] = useState({})
-  const { id } = useParams()
+  const {id} = useParams()
   const navigate = useNavigate()
 
   const handleEdit = () => {

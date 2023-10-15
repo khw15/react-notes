@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { extractContent } from '../../../utils'
+import {extractContent} from '../../../utils'
 
-function NoteItemBody({ body }) {
+function NoteItemBody({body}) {
   return (
     <p className="note-item__body">
       { extractContent(body) }

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { HiCheck } from 'react-icons/hi'
+import {HiCheck} from 'react-icons/hi'
 import PageAction from '../layout/PageAction'
 
-function NotesIdEditPageAction({ handleSave }) {
+function NotesIdEditPageAction({handleSave}) {
   return (
     <PageAction page="detail-page">
       <button
