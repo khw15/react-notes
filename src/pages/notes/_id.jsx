@@ -15,7 +15,7 @@ export default function NotesIdPages() {
   const navigate = useNavigate()
 
   const handleEdit = () => {
-    navigate(`/notes/${id}/sunting`)
+    navigate(`/notes/${id}/edit`)
   }
 
   const handleArchive = () => {
