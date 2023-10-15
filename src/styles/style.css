@@ -305,6 +305,14 @@ main {
   color: var(--on-background);
 }
 
+.notes-app__footer {
+  font-size: 18px;
+  border-top: 1px solid #aaa;
+  margin-top: 50px;
+  padding: 30px;
+  text-align: center;
+}
+
 /* Swal Custom Class */
 
 .swal-cancel-button, .swal-confirm-button {

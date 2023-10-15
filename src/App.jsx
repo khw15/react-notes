@@ -10,6 +10,7 @@ import NotesIdPages from './pages/notes/_id'
 import NotesNewPages from './pages/notes/new'
 import NavMenu from './components/layout/NavMenu'
 import NotesIdEditPages from './pages/notes/_id-edit'
+import Footer from './components/layout/Footer'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="*" element={<NotFoundPages />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   )
 }
