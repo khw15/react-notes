@@ -62,6 +62,13 @@ let notes = [
     'body': 'This is some random content for the note. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     'createdAt': '2023-10-15T12:00:00.000Z',
     'archived': true
+  },
+  {
+    'id': 'notes-10',
+    'title': 'Red Bull Racing',
+    'body': 'Red Bull Racing is a Formula One racing team, racing a Honda powered car under an Austrian licence and based in the United Kingdom. The team raced under a British licence from 2005 to 2006 and has raced under an Austrian licence since 2007.',
+    'createdAt': '2023-10-15T12:00:00.000Z',
+    'archived': false
   }
 ]
 
