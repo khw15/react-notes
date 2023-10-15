@@ -1,42 +1,21 @@
+@media screen and (min-width: 650px) {
+  .notes-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
+  .detail-page__title {
+    font-size: 64px;
+  }
+}
 
-@media only screen and (min-width: 500px) and (max-width: 800px) {
-    .notes-list {
-      grid-template-columns: 1fr 1fr;
-    }
-  
-    .ReactModal__Content,
-    .ReactModal__Content--after-open {
-      width: 300px;
-    }
+@media screen and (min-width: 850px) {
+  .notes-list {
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  @media only screen and (min-width: 800px) and (max-width: 1200px) {
-    .notes-list {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  
-    .note-search input {
-      min-width: 400px;
-    }
-  
-    .ReactModal__Content,
-    .ReactModal__Content--after-open {
-      width: 600px;
-    }
+}
+
+@media screen and (min-width: 1200px) {
+  .notes-list {
+    grid-template-columns: repeat(4, 1fr);
   }
-  
-  @media only screen and (min-width: 1200px) {
-    .notes-list {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  
-    .ReactModal__Content,
-    .ReactModal__Content--after-open {
-      width: 850px;
-    }
-  
-    .note-search input {
-      min-width: 400px;
-    }
-  }
+}
