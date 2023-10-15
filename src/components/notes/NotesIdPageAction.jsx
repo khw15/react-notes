@@ -14,7 +14,7 @@ function NotesIdPageAction({
         <button
           className="action"
           type="button"
-          title="Sunting"
+          title="Edit"
           onClick={() => handleEdit()}
         >
           <AiOutlineEdit />
@@ -22,7 +22,7 @@ function NotesIdPageAction({
         <button
           className="action"
           type="button"
-          title={archived ? 'Aktifkan' : 'Archive'}
+          title={archived ? 'Unarchive' : 'Archive'}
           onClick={() => handleArchive()}
         >
           {archived ? <BiArchiveOut /> : <BiArchiveIn />}
