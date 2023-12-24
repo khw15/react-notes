@@ -153,7 +153,7 @@ const loginPage = {
     loading: 'Memuat...'
   },
   en: {
-    header: 'Login to use app, please',
+    header: 'Login to use Dicatatin',
     footer: 'Don\'t have an account?',
     footerRegisterLink: 'Register',
     login: 'Login',
