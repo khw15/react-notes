@@ -97,20 +97,15 @@ export default function NotesIdPages() {
           if (!res.error) {
             setNote(res.data)
           } else {
-            MySwal.fire({
-              icon: 'error',
-              title: textNote.notFound
-            })
+            console.error(textNote.notFound)
           }
           setLoading(false)
         })
         .catch(() => {
-          MySwal.fire({
-            icon: 'error',
-            title: textApp.msg.error
-          })
+          console.error(textApp.msg.error)
         })
   }, [])
+
 
   return (
     <section className="detail-page">
