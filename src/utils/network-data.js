@@ -1,6 +1,10 @@
 import Cookies from 'js-cookie'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const BASE_URL = 'https://notes-api.dicoding.dev/v1'
+
+const MySwal = withReactContent(Swal)
 
 function getAccessToken() {
   return Cookies.get('accessToken')
@@ -32,7 +36,12 @@ async function login({email, password}) {
   const responseJson = await response.json()
 
   if (responseJson.status !== 'success') {
-    alert(responseJson.message)
+    MySwal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: responseJson.message
+    })
+
     return {error: true, data: null}
   }
 
@@ -51,7 +60,12 @@ async function register({name, email, password}) {
   const responseJson = await response.json()
 
   if (responseJson.status !== 'success') {
-    alert(responseJson.message)
+    MySwal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: responseJson.message
+    })
+
     return {error: true}
   }
 

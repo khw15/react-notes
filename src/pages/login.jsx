@@ -22,7 +22,7 @@ const LoginPage = () => {
       setLoading(true) // Set loading to true when starting the login process
 
       // Simulate a delay for demonstration purposes (replace with your actual login logic)
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      await new Promise((resolve) => setTimeout(resolve, 750))
 
       const loginResponse = await login({email, password})
 
