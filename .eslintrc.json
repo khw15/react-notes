@@ -23,6 +23,8 @@
         "comma-dangle": ["error", "never"],
         "semi": ["error", "never"],
         "linebreak-style": 0,
-        "no-param-reassign": ["error", { "props": false }]
+        "no-param-reassign": ["error", { "props": false }],
+        "no-unused-vars": 0,
+        "no-undef": 0
     }
 }

@@ -21,22 +21,8 @@ function NoteItem({note}) {
   )
 }
 
-export const noteItemPropTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired
-}
-NoteItem.propTypes = noteItemPropTypes
-
 NoteItem.propTypes = {
-  note: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired,
-    createdAt: PropTypes.string.isRequired
-  }).isRequired
+  note: PropTypes.oneOfType([PropTypes.object]).isRequired
 }
-
 
 export default NoteItem

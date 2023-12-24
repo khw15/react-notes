@@ -2,51 +2,60 @@ import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Editor} from 'react-draft-wysiwyg'
 import {
-  ContentState, convertFromHTML, EditorState, convertToRaw
+  ContentState,
+  convertFromHTML,
+  EditorState,
+  convertToRaw
 } from 'draft-js'
 import draftToHtml from 'draftjs-to-html'
 import AddNewPageAction from '../../components/notes/AddNewPageAction'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import {addNote} from '../../utils/local-data'
+import {addNote} from '../../utils/network-data'
+import useInput from '../../hooks/useInput'
+import useLanguage from '../../hooks/useLanguage'
 import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
-export default function NotesNewPages() {
+const MySwal = withReactContent(Swal)
+
+const NotesNewPages = () => {
+  const textApp = useLanguage('app')
+  const textNote = useLanguage('notesNew')
   const navigate = useNavigate()
 
-  const [form, setForm] = useState({
-    title: '',
-    body: EditorState.createWithContent(
-        ContentState.createFromBlockArray(
-            convertFromHTML('<b><i>Your notes here...</i></b>')
-        )
-    )
-  })
+  const [title, setTitle] = useInput('')
+  const [body, setBody] = useState(
+      EditorState.createWithContent(
+          ContentState.createFromBlockArray(
+              convertFromHTML(textNote.bodyPlaceholder)
+          )
+      )
+  )
 
-  const handleChange = (e) => {
-    setForm((data) => ({...data, title: e.target.value}))
-  }
-
-  const onEditorStateChange = (body) => {
-    setForm((data) => ({...data, body}))
+  const onEditorStateChange = (newBody) => {
+    setBody(newBody)
   }
 
   const handleSave = () => {
-    const {title} = form
-    const body = draftToHtml(convertToRaw(form.body.getCurrentContent()))
-    addNote({title, body})
-    navigate('/')
+    const bodyParsed = draftToHtml(convertToRaw(body.getCurrentContent()))
 
-    const successToast = Swal.mixin({
-      toast: true,
-      position: 'bottom-start',
-      showConfirmButton: false,
-      timer: 1500
-    })
-
-    successToast.fire({
-      icon: 'success',
-      title: 'Note Saved!'
-    })
+    addNote({title, body: bodyParsed})
+        .then((res) => {
+          if (!res.error) {
+            MySwal.fire({
+              icon: 'success',
+              title: textNote.addTitle,
+              showConfirmButton: false,
+              timer: 2500
+            }).then(() => navigate('/'))
+          }
+        })
+        .catch(() => {
+          MySwal.fire({
+            icon: 'error',
+            title: textApp.addErrorTitle
+          })
+        })
   }
 
   return (
@@ -54,22 +63,21 @@ export default function NotesNewPages() {
       <div className="add-new-page__input">
         <input
           className="add-new-page__input__title"
-          placeholder="Title"
-          value={form.title}
-          onChange={handleChange}
+          placeholder={textNote.titlePlaceholder}
+          value={title}
+          onChange={setTitle}
         />
         <Editor
-          editorState={form.body}
+          editorState={body}
           toolbarClassName="toolbarClassName"
           wrapperClassName="wrapperClassName"
           editorClassName="editorClassName"
           onEditorStateChange={onEditorStateChange}
         />
       </div>
-      <AddNewPageAction
-        handleSave={handleSave}
-      />
+      <AddNewPageAction handleSave={handleSave} />
     </section>
-
   )
 }
+
+export default NotesNewPages
