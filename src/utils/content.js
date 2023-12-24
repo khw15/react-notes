@@ -41,7 +41,7 @@ const appPage = {
     title: 'Dicatatin',
     nav: {
       home: '홈',
-      archives: '보관됨',
+      archives: '보관',
       korean: '한국어'
     },
     msg: {
@@ -52,7 +52,7 @@ const appPage = {
     add: '추가',
     cancel: '취소',
     delete: '삭제',
-    archive: '아카이브',
+    archive: '보관됨',
     active: '활성화',
     back: '뒤로',
     pageNotFound: '페이지를 찾을 수 없습니다.'
@@ -61,25 +61,25 @@ const appPage = {
 
 const loginPage = {
   id: {
-    header: 'Login untuk menggunakan Dicatatin',
+    header: 'Masuk untuk menggunakan Dicatatin',
     footer: 'Belum punya akun?',
-    footerRegisterLink: 'Daftar disini',
+    footerRegisterLink: 'Daftar',
     login: 'Masuk',
     email: 'Email',
     password: 'Kata Sandi'
   },
   en: {
-    header: 'Login to use app, please.',
+    header: 'Login to use app, please',
     footer: 'Don\'t have an account?',
-    footerRegisterLink: 'Register here',
+    footerRegisterLink: 'Register',
     login: 'Login',
     email: 'Email',
     password: 'Password'
   },
   ko: {
-    header: 'Dicatatin을 사용하려면 로그인하세요.',
+    header: 'Dicatatin을 사용하려면 로그인하세요',
     footer: '계정이 없으신가요?',
-    footerRegisterLink: '여기에서 등록',
+    footerRegisterLink: '회원가입',
     login: '로그인',
     email: '이메일',
     password: '비밀번호'
@@ -88,25 +88,40 @@ const loginPage = {
 
 const registerPage = {
   id: {
-    header: 'Isi form untuk mendaftar akun.',
+    header: 'Isi seluruh form untuk membuat akun',
     footer: 'Sudah punya akun?',
-    footerLoginLink: 'Login disini',
+    footerLoginLink: 'Masuk di sini',
+    name: 'Nama',
+    email: 'Email',
+    password: 'Kata Sandi',
+    confirm: 'Konfirmasi Kata Sandi',
+    register: 'Daftar',
     msg: {
-      registerSuccess: 'Akun berhasil dibuat. Silahkan login.'
+      registerSuccess: 'Akun berhasil dibuat'
     }
   },
   en: {
-    header: 'Fill the form to register account.',
+    header: 'Fill out the entire form to create an account',
     footer: 'Already have an account?',
     footerLoginLink: 'Login here',
+    name: 'Name',
+    email: 'Email',
+    password: 'Password',
+    confirm: 'Confirm Password',
+    register: 'Register',
     msg: {
-      registerSuccess: 'User created successfully.'
+      registerSuccess: 'User created successfully'
     }
   },
   ko: {
     header: '계정을 등록하려면 양식을 작성하세요.',
     footer: '이미 계정이 있으신가요?',
-    footerLoginLink: '여기에서 로그인',
+    footerLoginLink: '로그인하기',
+    name: '이름',
+    email: '이메일',
+    password: '비밀번호',
+    confirm: '비밀번호 확인',
+    register: '회원하기',
     msg: {
       registerSuccess: '계정이 성공적으로 생성되었습니다. 로그인하세요.'
     }

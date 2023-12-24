@@ -38,7 +38,7 @@ export default function RegisterPage() {
     <section className="register-page">
       <h2>{ textRegister.header }</h2>
       <form className="input-register" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">{ textRegister.name }</label>
         <input
           type="text"
           id="name"
@@ -48,7 +48,7 @@ export default function RegisterPage() {
           maxLength="255"
           required
         />
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{ textRegister.email }</label>
         <input
           type="email"
           id="email"
@@ -58,7 +58,7 @@ export default function RegisterPage() {
           maxLength="255"
           required
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{ textRegister.password }</label>
         <input
           type="password"
           id="password"
@@ -68,7 +68,7 @@ export default function RegisterPage() {
           maxLength="255"
           required
         />
-        <label htmlFor="confirmPassword">Confirm Password</label>
+        <label htmlFor="confirmPassword">{ textRegister.confirm }</label>
         <input
           type="password"
           id="confirmPassword"
@@ -78,7 +78,7 @@ export default function RegisterPage() {
           maxLength="255"
           required
         />
-        <button type="submit">Register</button>
+        <button type="submit">{ textRegister.register }</button>
       </form>
       <p className="register-page__footer">
         { textRegister.footer }
