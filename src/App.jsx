@@ -26,7 +26,10 @@ function App() {
         newLocale = 'ko' // Toggle to Korean
         break
       case 'ko':
-        newLocale = 'id' // Toggle back to Indonesian
+        newLocale = 'ja' // Toggle back to Indonesian
+        break
+      case 'ja':
+        newLocale = 'id' // Toggle back to English
         break
       default:
         newLocale = 'en'
@@ -57,7 +60,7 @@ function App() {
         })
 
     const storedLocale = Cookies.get('locale')
-    if (storedLocale && ['id', 'en', 'ko'].includes(storedLocale)) {
+    if (storedLocale && ['id', 'en', 'ko', 'ja'].includes(storedLocale)) {
       setLocale(storedLocale)
     }
 

@@ -13,6 +13,8 @@ export default function LangToggler() {
         return 'English'
       case 'ko':
         return '한국어'
+      case 'ja':
+        return '日本語'
       default:
         return 'Language'
     }

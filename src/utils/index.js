@@ -11,8 +11,16 @@ const showFormattedDate = (date) => {
   }
 
   // Set locale based on the cookie value
-  // eslint-disable-next-line max-len
-  const localeString = locale === 'id' ? 'id-ID' : (locale === 'ko' ? 'ko-KR' : 'en-US')
+  let localeString
+  if (locale === 'id') {
+    localeString = 'id-ID'
+  } else if (locale === 'ko') {
+    localeString = 'ko-KR'
+  } else if (locale === 'ja') {
+    localeString = 'ja-JP'
+  } else {
+    localeString = 'en-US'
+  }
 
   return new Date(date).toLocaleDateString(localeString, options)
 }

@@ -102,6 +102,43 @@ const appPage = {
     confirmArchiveButtonText: '보관',
     cancelArchiveButtonText: '취소',
     successArchive: '노트가 성공적으로 보관되었습니다!'
+  },
+  ja: {
+    title: 'Dicatatin',
+    nav: {
+      home: 'ホーム',
+      archives: 'アーカイブ'
+    },
+    msg: {
+      confirm: '本当によろしいですか？',
+      yes: 'ログアウト',
+      no: 'キャンセル',
+      loading: 'データを読み込んでいます...',
+      error: '技術的なエラーが発生しました。後でもう一度試してください。'
+    },
+    add: '追加',
+    cancel: 'キャンセル',
+    delete: '削除',
+    archive: 'アーカイブ',
+    active: 'アクティブ',
+    back: '戻る',
+    pageNotFound: 'ページが見つかりません',
+    // Swal for delete
+    deleteTitle: 'ノートの削除',
+    deleteText: 'このノートを削除してもよろしいですか？',
+    confirmDeleteButtonText: '削除',
+    cancelCancelButtonText: 'キャンセル',
+    successDelete: 'ノートの削除に成功しました！',
+    // Swal for archive
+    archiveTitle: 'ノートのアーカイブ',
+    archiveText: 'このノートをアーカイブしてもよろしいですか？',
+    confirmArchiveButtonText: 'アーカイブ',
+    cancelButtonText: 'キャンセル',
+    successArchive: 'ノートのアーカイブに成功しました！',
+    // Swal for unarchive
+    unarchiveTitle: 'ノートのアクティブ化',
+    unarchiveText: 'このノートをアクティブにしてもよろしいですか？',
+    confirmUnarchiveButtonText: 'アクティブにする'
   }
 }
 
@@ -129,6 +166,14 @@ const loginPage = {
     login: '로그인',
     email: '이메일',
     password: '비밀번호'
+  },
+  ja: {
+    header: 'Dicatatinを利用するにはログインしてください',
+    footer: 'アカウントをお持ちでないですか？',
+    footerRegisterLink: '登録',
+    login: 'ログイン',
+    email: '電子メール',
+    password: 'パスワード'
   }
 }
 
@@ -171,6 +216,19 @@ const registerPage = {
     msg: {
       registerSuccess: '계정이 성공적으로 만들어졌습니다'
     }
+  },
+  ja: {
+    header: 'アカウントを作成するにはすべてのフォームに記入してください',
+    footer: 'すでにアカウントをお持ちですか？',
+    footerLoginLink: 'ログイン',
+    name: '名前',
+    email: '電子メール',
+    password: 'パスワード',
+    confirm: 'パスワードの確認',
+    register: '登録',
+    msg: {
+      registerSuccess: 'アカウントが正常に作成されました'
+    }
   }
 }
 
@@ -189,6 +247,11 @@ const notePage = {
     header: '활성 노트',
     searchPlaceholder: '제목으로 검색...',
     empty: '노트가 없습니다'
+  },
+  ja: {
+    header: 'アクティブノート',
+    searchPlaceholder: 'タイトルで検索...',
+    empty: 'ノートはありません'
   }
 }
 
@@ -210,6 +273,12 @@ const notesNewPage = {
     bodyPlaceholder: '내용하기',
     addTitle: '추가되었습니다',
     addErrorTitle: '추가하지 못했습니다'
+  },
+  ja: {
+    titlePlaceholder: 'タイトル',
+    bodyPlaceholder: 'ノートの内容',
+    addTitle: 'ノートが正常に追加されました',
+    addErrorTitle: 'ノートの追加に失敗しました'
   }
 }
 
@@ -222,6 +291,9 @@ const notesIdPage = {
   },
   ko: {
     notFound: '노트를 찾을 수 없습니다'
+  },
+  ja: {
+    notFound: 'ノートが見つかりません'
   }
 }
 
@@ -234,6 +306,9 @@ const archivePage = {
   },
   ko: {
     header: '보관된 노트'
+  },
+  ja: {
+    header: 'アーカイブされたノート'
   }
 }
 
