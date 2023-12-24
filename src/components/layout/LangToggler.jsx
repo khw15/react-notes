@@ -2,23 +2,19 @@ import React, {useContext} from 'react'
 import {MdGTranslate} from 'react-icons/md'
 import LocaleContext from '../../contexts/LocaleContext'
 
-export default function LangToggler() {
+const languageTitles = {
+  id: 'Indonesia',
+  en: 'English',
+  ko: '한국어',
+  ja: '日本語',
+  default: 'Language'
+}
+
+const LangToggler = () => {
   const {locale, toggleLocale} = useContext(LocaleContext)
 
-  const getLanguageTitle = () => {
-    switch (locale) {
-      case 'id':
-        return 'Indonesia'
-      case 'en':
-        return 'English'
-      case 'ko':
-        return '한국어'
-      case 'ja':
-        return '日本語'
-      default:
-        return 'Language'
-    }
-  }
+  // eslint-disable-next-line max-len
+  const getLanguageTitle = () => languageTitles[locale] || languageTitles.default
 
   return (
     <button
@@ -31,3 +27,5 @@ export default function LangToggler() {
     </button>
   )
 }
+
+export default LangToggler
