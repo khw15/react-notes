@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import PropTypes from 'prop-types'
 import {HiX, HiCheck} from 'react-icons/hi'
 import {useNavigate} from 'react-router-dom'
 import PageAction from '../layout/PageAction'
+import useLanguage from '../../hooks/useLanguage'
 
-const AddNewPageAction = ({handleSave}) => {
+function AddNewPageAction({handleSave}) {
+  const text = useLanguage('app')
   const navigate = useNavigate()
 
   return (
@@ -13,7 +15,7 @@ const AddNewPageAction = ({handleSave}) => {
         <button
           className="action"
           type="button"
-          title="Close"
+          title={text.cancel}
           onClick={() => navigate('/')}
         >
           <HiX />
@@ -21,7 +23,7 @@ const AddNewPageAction = ({handleSave}) => {
         <button
           className="action"
           type="button"
-          title="Add"
+          title={text.add}
           onClick={() => handleSave()}
         >
           <HiCheck />
