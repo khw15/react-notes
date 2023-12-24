@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { GrSun } from 'react-icons/gr'
-import { IoMdMoon } from 'react-icons/io'
+import React, {useEffect, useState} from 'react'
+import {GrSun} from 'react-icons/gr'
+import {IoMdMoon} from 'react-icons/io'
 import useTheme from '../../hooks/useTheme'
 
 export default function ThemeToggler() {
