@@ -22,6 +22,12 @@ const RegisterPage = () => {
 
   const [loading, setLoading] = useState(false)
 
+  const handleEmailChange = (e) => {
+    onEmailChange(e) // Preserve the original onEmailChange behavior
+    const lowercaseEmail = e.target.value.toLowerCase()
+    onEmailChange({target: {value: lowercaseEmail}})
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -38,12 +44,11 @@ const RegisterPage = () => {
 
       await new Promise((resolve) => setTimeout(resolve, 1500))
 
-      const registerResponse = await register({name, email, password})
+      const registerResponse = await register({name, email: email.toLowerCase(), password})
 
       if (!registerResponse.error) {
         MySwal.fire({
           icon: 'success',
-          allowOutsideClick: false,
           title: textRegister.msg.registerSuccess
         }).then(() => {
           navigate('/login')
@@ -79,7 +84,7 @@ const RegisterPage = () => {
           type="email"
           id="email"
           value={email}
-          onChange={onEmailChange}
+          onChange={handleEmailChange}
           minLength="6"
           maxLength="255"
           required
