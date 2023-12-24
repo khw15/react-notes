@@ -29,8 +29,12 @@ const appPage = {
     archiveTitle: 'Arsipkan Catatan',
     archiveText: 'Apakah anda yakin ingin mengarsipkan catatan ini?',
     confirmArchiveButtonText: 'Arsipkan',
-    cancelArchiveButtonText: 'Batal',
-    successArchive: 'Berhasil mengarsipkan catatan!'
+    cancelButtonText: 'Batal',
+    successArchive: 'Berhasil mengarsipkan catatan!',
+    // Swal for unarchive
+    unarchiveTitle: 'Aktifkan Catatan',
+    unarchiveText: 'Apakah anda yakin ingin mengaktifkan catatan ini?',
+    confirmUnarchiveButtonText: 'Aktifkan'
   },
   en: {
     title: 'Dicatatin',

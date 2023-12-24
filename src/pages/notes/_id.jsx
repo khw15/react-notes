@@ -27,25 +27,42 @@ export default function NotesIdPages() {
   const navigate = useNavigate()
 
   const handleArchive = () => {
-    if (window.confirm(textApp.msg.confirm)) {
-      let methods = null
-      let navigateTo = '/'
-      if (note.archived) {
-        methods = unarchiveNote(id)
-        navigateTo = '/archives'
-      } else {
-        methods = archiveNote(id)
+    const isNoteArchived = note.archived
+
+    MySwal.fire({
+      // eslint-disable-next-line max-len
+      title: isNoteArchived ? textApp.unarchiveTitle : textApp.archiveTitle,
+      // eslint-disable-next-line max-len
+      text: isNoteArchived ? textApp.unarchiveText : textApp.archiveText,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      // eslint-disable-next-line max-len
+      confirmButtonText: isNoteArchived ? textApp.confirmUnarchiveButtonText : textApp.confirmArchiveButtonText,
+      cancelButtonText: textApp.cancelButtonText
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let methods = null
+        let navigateTo = '/'
+        if (isNoteArchived) {
+          methods = unarchiveNote(id)
+        } else {
+          methods = archiveNote(id)
+          navigateTo = '/archives'
+        }
+        methods.then((res) => {
+          if (!res.error) {
+            navigate(navigateTo)
+          }
+        }).catch(() => {
+          MySwal.fire({
+            icon: 'error',
+            title: textApp.msg.error
+          })
+        })
       }
-      methods
-          .then((res) => {
-            if (!res.error) {
-              navigate(navigateTo)
-            }
-          })
-          .catch(() => {
-            alert(textApp.msg.error)
-          })
-    }
+    })
   }
 
   const handleDelete = () => {
@@ -80,12 +97,18 @@ export default function NotesIdPages() {
           if (!res.error) {
             setNote(res.data)
           } else {
-            alert(textNote.notFound)
+            MySwal.fire({
+              icon: 'error',
+              title: textNote.notFound
+            })
           }
           setLoading(false)
         })
         .catch(() => {
-          alert(textApp.msg.error)
+          MySwal.fire({
+            icon: 'error',
+            title: textApp.msg.error
+          })
         })
   }, [])
 
