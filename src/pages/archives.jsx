@@ -7,7 +7,7 @@ import useInput from '../hooks/useInput'
 import useLanguage from '../hooks/useLanguage'
 import {getArchivedNotes} from '../utils/network-data'
 
-export default function ArchivesPage() {
+const ArchivesPage = () => {
   const [dataNotes, setDataNotes] = useState([])
   const [initNotes, setInitNotes] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -16,19 +16,19 @@ export default function ArchivesPage() {
   const text = useLanguage('archive')
   const textNote = useLanguage('note')
 
-  const initNotesFromApi = () => {
-    getArchivedNotes()
-        .then((res) => {
-          if (!res.error) {
-            setDataNotes(res.data)
-            setNotes(res.data)
-            setInitNotes(true)
-            setLoading(false)
-          }
-        })
-        .catch(() => {
-          alert(appPage[locale].msg.error)
-        })
+  const initNotesFromApi = async () => {
+    try {
+      const res = await getArchivedNotes()
+      if (!res.error) {
+        setDataNotes(res.data)
+        setNotes(res.data)
+        setInitNotes(true)
+        setLoading(false)
+      }
+    } catch (error) {
+      console.error('Error fetching archived notes:', error)
+      // Handle error (e.g., show a user-friendly error message)
+    }
   }
 
   useEffect(() => {
@@ -37,17 +37,17 @@ export default function ArchivesPage() {
     }
 
     if (initNotes) {
-      let tempDataNotes = [...dataNotes]
-      if (search !== '') {
-        tempDataNotes = tempDataNotes.filter((note) =>
-          note.title.toLowerCase().includes(search.toLowerCase()))
-      }
-      setNotes(tempDataNotes)
+      const filteredNotes = search ?
+        // eslint-disable-next-line max-len
+        dataNotes.filter((note) => note.title.toLowerCase().includes(search.toLowerCase())) :
+        [...dataNotes]
+      setNotes(filteredNotes)
     }
-  }, [search])
+  }, [search, initNotes])
+
   return (
     <section className="homepage">
-      <h2>{ text.header }</h2>
+      <h2>{text.header}</h2>
       <section className="search-bar">
         <input
           type="text"
@@ -56,10 +56,12 @@ export default function ArchivesPage() {
           onChange={setSearch}
         />
       </section>
-      {(notes.length > 0 && !loading) ? <NotesList notes={notes} /> : ''}
-      {(notes.length === 0 && !loading) ? <NoteListEmpty /> : ''}
-      {loading ? <LoadingIndicator /> : ''}
+      {notes.length > 0 && !loading && <NotesList notes={notes} />}
+      {notes.length === 0 && !loading && <NoteListEmpty />}
+      {loading && <LoadingIndicator />}
       <HomepageAction />
     </section>
   )
 }
+
+export default ArchivesPage

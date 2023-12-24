@@ -149,7 +149,8 @@ const loginPage = {
     footerRegisterLink: 'Daftar',
     login: 'Masuk',
     email: 'Email',
-    password: 'Kata Sandi'
+    password: 'Kata Sandi',
+    loading: 'Memuat...'
   },
   en: {
     header: 'Login to use app, please',
@@ -157,7 +158,8 @@ const loginPage = {
     footerRegisterLink: 'Register',
     login: 'Login',
     email: 'Email',
-    password: 'Password'
+    password: 'Password',
+    loading: 'Loading...'
   },
   ko: {
     header: 'Dicatatin을 사용하려면 로그인하세요',
@@ -165,7 +167,8 @@ const loginPage = {
     footerRegisterLink: '회원가입',
     login: '로그인',
     email: '이메일',
-    password: '비밀번호'
+    password: '비밀번호',
+    loading: '로딩 중...'
   },
   ja: {
     header: 'Dicatatinを利用するにはログインしてください',
@@ -173,7 +176,8 @@ const loginPage = {
     footerRegisterLink: '登録',
     login: 'ログイン',
     email: '電子メール',
-    password: 'パスワード'
+    password: 'パスワード',
+    loading: '読み込み中...'
   }
 }
 
@@ -187,8 +191,10 @@ const registerPage = {
     password: 'Kata Sandi',
     confirm: 'Konfirmasi Kata Sandi',
     register: 'Daftar',
+    loading: 'Memuat...',
     msg: {
-      registerSuccess: 'Akun berhasil dibuat'
+      registerSuccess: 'Akun berhasil dibuat',
+      confirmPasswordMismatch: 'Kata sandi tidak cocok'
     }
   },
   en: {
@@ -200,8 +206,10 @@ const registerPage = {
     password: 'Password',
     confirm: 'Confirm Password',
     register: 'Register',
+    loading: 'Loading...',
     msg: {
-      registerSuccess: 'Account created successfully'
+      registerSuccess: 'Account created successfully',
+      confirmPasswordMismatch: 'Password mismatch'
     }
   },
   ko: {
@@ -213,8 +221,10 @@ const registerPage = {
     password: '비밀번호',
     confirm: '비밀번호 확인',
     register: '회원하기',
+    loading: '로딩 중...',
     msg: {
-      registerSuccess: '계정이 성공적으로 만들어졌습니다'
+      registerSuccess: '계정이 성공적으로 만들어졌습니다',
+      confirmPasswordMismatch: '비밀번호가 일치하지 않습니다'
     }
   },
   ja: {
@@ -226,8 +236,10 @@ const registerPage = {
     password: 'パスワード',
     confirm: 'パスワードの確認',
     register: '登録',
+    loading: '読み込み中...',
     msg: {
-      registerSuccess: 'アカウントが正常に作成されました'
+      registerSuccess: 'アカウント作成成功',
+      confirmPasswordMismatch: 'パスワードが一致しません'
     }
   }
 }

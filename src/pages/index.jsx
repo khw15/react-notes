@@ -7,7 +7,7 @@ import useInput from '../hooks/useInput'
 import useLanguage from '../hooks/useLanguage'
 import {getActiveNotes} from '../utils/network-data'
 
-export default function IndexPage() {
+const IndexPage = () => {
   const [dataNotes, setDataNotes] = useState([])
   const [initNotes, setInitNotes] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -16,19 +16,19 @@ export default function IndexPage() {
   const textApp = useLanguage('app')
   const textNote = useLanguage('note')
 
-  const initNotesFromApi = () => {
-    getActiveNotes()
-        .then((res) => {
-          if (!res.error) {
-            setDataNotes(res.data)
-            setNotes(res.data)
-            setInitNotes(true)
-            setLoading(false)
-          }
-        })
-        .catch(() => {
-          alert(textApp.msg.error)
-        })
+  const initNotesFromApi = async () => {
+    try {
+      const res = await getActiveNotes()
+      if (!res.error) {
+        setDataNotes(res.data)
+        setNotes(res.data)
+        setInitNotes(true)
+        setLoading(false)
+      }
+    } catch (error) {
+      console.error('Error fetching active notes:', error)
+      // Handle error (e.g., show a user-friendly error message)
+    }
   }
 
   useEffect(() => {
@@ -37,17 +37,17 @@ export default function IndexPage() {
     }
 
     if (initNotes) {
-      let tempDataNotes = [...dataNotes]
-      if (search !== '') {
-        tempDataNotes = tempDataNotes.filter((note) =>
-          note.title.toLowerCase().includes(search.toLowerCase()))
-      }
-      setNotes(tempDataNotes)
+      const filteredNotes = search ?
+        // eslint-disable-next-line max-len
+        dataNotes.filter((note) => note.title.toLowerCase().includes(search.toLowerCase())) :
+        [...dataNotes]
+      setNotes(filteredNotes)
     }
-  }, [search])
+  }, [search, initNotes])
+
   return (
     <section className="homepage">
-      <h2>{ textNote.header }</h2>
+      <h2>{textNote.header}</h2>
       <section className="search-bar">
         <input
           type="text"
@@ -56,10 +56,12 @@ export default function IndexPage() {
           onChange={setSearch}
         />
       </section>
-      {(notes.length > 0 && !loading) ? <NotesList notes={notes} /> : ''}
-      {(notes.length === 0 && !loading) ? <NoteListEmpty /> : ''}
-      {loading ? <LoadingIndicator /> : ''}
+      {notes.length > 0 && !loading && <NotesList notes={notes} />}
+      {notes.length === 0 && !loading && <NoteListEmpty />}
+      {loading && <LoadingIndicator />}
       <HomepageAction />
     </section>
   )
 }
+
+export default IndexPage

@@ -1,10 +1,15 @@
-import React from 'react'
+/* eslint-disable max-len */
+import React, {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import useInput from '../hooks/useInput'
 import useLanguage from '../hooks/useLanguage'
 import {register} from '../utils/network-data'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
-export default function RegisterPage() {
+const MySwal = withReactContent(Swal)
+
+const RegisterPage = () => {
   const [name, onNameChange] = useInput('')
   const [email, onEmailChange] = useInput('')
   const [password, onPasswordChange] = useInput('')
@@ -15,30 +20,51 @@ export default function RegisterPage() {
   const textApp = useLanguage('app')
   const textRegister = useLanguage('register')
 
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     if (password !== confirmPassword) {
-      alert('Konfirmasi password tidak sesuai')
+      MySwal.fire({
+        icon: 'error',
+        title: textRegister.msg.confirmPasswordMismatch
+      })
+      return
     }
 
-    register({name, email, password})
-        .then((res) => {
-          if (!res.error) {
-            alert(textRegister.msg.registerSuccess)
-            navigate('/login')
-          }
+    try {
+      setLoading(true)
+
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+
+      const registerResponse = await register({name, email, password})
+
+      if (!registerResponse.error) {
+        MySwal.fire({
+          icon: 'success',
+          allowOutsideClick: false,
+          title: textRegister.msg.registerSuccess
+        }).then(() => {
+          navigate('/login')
         })
-        .catch(() => {
-          alert(textApp.msg.error)
-        })
+      }
+    } catch (error) {
+      console.error('Error during registration:', error)
+      MySwal.fire({
+        icon: 'error',
+        title: textApp.msg.error
+      })
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <section className="register-page">
-      <h2>{ textRegister.header }</h2>
+      <h2>{textRegister.header}</h2>
       <form className="input-register" onSubmit={handleSubmit}>
-        <label htmlFor="name">{ textRegister.name }</label>
+        <label htmlFor="name">{textRegister.name}</label>
         <input
           type="text"
           id="name"
@@ -48,7 +74,7 @@ export default function RegisterPage() {
           maxLength="255"
           required
         />
-        <label htmlFor="email">{ textRegister.email }</label>
+        <label htmlFor="email">{textRegister.email}</label>
         <input
           type="email"
           id="email"
@@ -58,7 +84,7 @@ export default function RegisterPage() {
           maxLength="255"
           required
         />
-        <label htmlFor="password">{ textRegister.password }</label>
+        <label htmlFor="password">{textRegister.password}</label>
         <input
           type="password"
           id="password"
@@ -68,7 +94,7 @@ export default function RegisterPage() {
           maxLength="255"
           required
         />
-        <label htmlFor="confirmPassword">{ textRegister.confirm }</label>
+        <label htmlFor="confirmPassword">{textRegister.confirm}</label>
         <input
           type="password"
           id="confirmPassword"
@@ -78,13 +104,15 @@ export default function RegisterPage() {
           maxLength="255"
           required
         />
-        <button type="submit">{ textRegister.register }</button>
+        <button type="submit" disabled={loading}>
+          {loading ? textRegister.loading : textRegister.register}
+        </button>
       </form>
       <p className="register-page__footer">
-        { textRegister.footer }
-        {' '}
-        <Link to="/login">{ textRegister.footerLoginLink }</Link>
+        {textRegister.footer} <Link to="/login">{textRegister.footerLoginLink}</Link>
       </p>
     </section>
   )
 }
+
+export default RegisterPage
