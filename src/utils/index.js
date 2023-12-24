@@ -11,16 +11,14 @@ const showFormattedDate = (date) => {
   }
 
   // Set locale based on the cookie value
-  let localeString
-  if (locale === 'id') {
-    localeString = 'id-ID'
-  } else if (locale === 'ko') {
-    localeString = 'ko-KR'
-  } else if (locale === 'ja') {
-    localeString = 'ja-JP'
-  } else {
-    localeString = 'en-US'
+  const localeMappings = {
+    id: 'id-ID',
+    ko: 'ko-KR',
+    ja: 'ja-JP',
+    en: 'en-US'
   }
+
+  const localeString = localeMappings[locale] || 'en-US'
 
   return new Date(date).toLocaleDateString(localeString, options)
 }

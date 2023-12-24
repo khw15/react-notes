@@ -18,7 +18,7 @@ import withReactContent from 'sweetalert2-react-content'
 
 const MySwal = withReactContent(Swal)
 
-export default function NotesNewPages() {
+const NotesNewPages = () => {
   const textApp = useLanguage('app')
   const textNote = useLanguage('notesNew')
   const navigate = useNavigate()
@@ -32,8 +32,8 @@ export default function NotesNewPages() {
       )
   )
 
-  const onEditorStateChange = (body) => {
-    setBody(body)
+  const onEditorStateChange = (newBody) => {
+    setBody(newBody)
   }
 
   const handleSave = () => {
@@ -79,3 +79,5 @@ export default function NotesNewPages() {
     </section>
   )
 }
+
+export default NotesNewPages
