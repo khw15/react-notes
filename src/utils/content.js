@@ -18,7 +18,19 @@ const appPage = {
     archive: 'Arsipkan',
     active: 'Aktifkan',
     back: 'Kembali',
-    pageNotFound: 'Halaman Tidak Ditemukan'
+    pageNotFound: 'Halaman Tidak Ditemukan',
+    // Swal for delete
+    deleteTitle: 'Hapus Catatan',
+    deleteText: 'Apakah anda yakin ingin menghapus catatan ini?',
+    confirmDeleteButtonText: 'Hapus',
+    cancelCancelButtonText: 'Batal',
+    successDelete: 'Berhasil menghapus catatan!',
+    // Swal for archive
+    archiveTitle: 'Arsipkan Catatan',
+    archiveText: 'Apakah anda yakin ingin mengarsipkan catatan ini?',
+    confirmArchiveButtonText: 'Arsipkan',
+    cancelArchiveButtonText: 'Batal',
+    successArchive: 'Berhasil mengarsipkan catatan!'
   },
   en: {
     title: 'Dicatatin',
@@ -39,7 +51,19 @@ const appPage = {
     archive: 'Archive',
     active: 'Active',
     back: 'Back',
-    pageNotFound: 'Page Not Found'
+    pageNotFound: 'Page Not Found',
+    // Swal for delete
+    deleteTitle: 'Delete Note',
+    deleteText: 'Are you sure you want to delete this note?',
+    confirmDeleteButtonText: 'Delete',
+    cancelCancelButtonText: 'Cancel',
+    successDelete: 'Successfully delete note!',
+    // Swal for archive
+    archiveTitle: 'Archive Note',
+    archiveText: 'Are you sure you want to archive this note?',
+    confirmArchiveButtonText: 'Archive',
+    cancelArchiveButtonText: 'Cancel',
+    successArchive: 'Successfully archive note!'
   },
   ko: {
     title: 'Dicatatin',
@@ -61,7 +85,19 @@ const appPage = {
     archive: '보관됨',
     active: '활성화',
     back: '뒤로',
-    pageNotFound: '페이지를 찾을 수 없습니다'
+    pageNotFound: '페이지를 찾을 수 없습니다',
+    // Swal for delete
+    deleteTitle: '노트 삭제',
+    deleteText: '이 노트를 삭제하시겠습니까?',
+    confirmDeleteButtonText: '삭제',
+    cancelCancelButtonText: '취소',
+    successDelete: '노트가 성공적으로 삭제되었습니다!',
+    // Swal for archive
+    archiveTitle: '노트 보관',
+    archiveText: '이 노트를 보관하시겠습니까?',
+    confirmArchiveButtonText: '보관',
+    cancelArchiveButtonText: '취소',
+    successArchive: '노트가 성공적으로 보관되었습니다!'
   }
 }
 
@@ -156,17 +192,20 @@ const notesNewPage = {
   id: {
     titlePlaceholder: 'Judul',
     bodyPlaceholder: 'Isi Catatan',
-    msgSuccess: 'Berhasil menambahkan catatan!'
+    addTitle: 'Catatan Berhasil Ditambahkan',
+    addErrorTitle: 'Catatan Gagal Ditambahkan'
   },
   en: {
     titlePlaceholder: 'Title',
     bodyPlaceholder: 'Notes Content',
-    msgSuccess: 'Successfully add notes!'
+    addTitle: 'Note Successfully Added',
+    addErrorTitle: 'Note Failed to Add'
   },
   ko: {
     titlePlaceholder: '제목',
     bodyPlaceholder: '내용하기',
-    msgSuccess: '노트가 성공적으로 추가되었습니다!'
+    addTitle: '추가되었습니다',
+    addErrorTitle: '추가하지 못했습니다'
   }
 }
 
