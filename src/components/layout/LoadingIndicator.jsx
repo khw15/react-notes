@@ -1,13 +1,10 @@
 import React from 'react'
 import useLanguage from '../../hooks/useLanguage'
 
-export default function NotFoundMessage() {
+export default function LoadingIndicator() {
   const text = useLanguage('app')
 
   return (
-    <>
-      <h2>404</h2>
-      <p>{ text.pageNotFound }</p>
-    </>
+    <p className='loading-indicator'>{ text.msg.loading }</p>
   )
 }
