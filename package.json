@@ -28,12 +28,15 @@
     "sweetalert2": "^11.10.1"
   },
   "devDependencies": {
+    "@sweetalert2/theme-dark": "^5.0.15",
+    "@sweetalert2/theme-default": "^5.0.15",
     "eslint": "^8.56.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "sweetalert2-react-content": "^5.0.7"
   },
   "eslintConfig": {
     "extends": [

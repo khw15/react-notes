@@ -7,6 +7,8 @@ const appPage = {
     },
     msg: {
       confirm: 'Apakah anda yakin?',
+      yes: 'Keluar',
+      no: 'Batal',
       loading: 'Memuat data...',
       error: 'Ada kesalahan teknis. Coba lagi nanti.'
     },
@@ -26,6 +28,8 @@ const appPage = {
     },
     msg: {
       confirm: 'Are you sure?',
+      yes: 'Logout',
+      no: 'Cancel',
       loading: 'Loading...',
       error: 'Error. Try again later.'
     },
@@ -46,6 +50,8 @@ const appPage = {
     },
     msg: {
       confirm: '확실합니까?',
+      yes: '로그아웃',
+      no: '취소',
       loading: '로딩 중...',
       error: '기술적 오류가 발생했습니다. 나중에 다시 시도하십시오.'
     },
