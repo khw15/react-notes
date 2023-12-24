@@ -7,6 +7,7 @@ import LoadingIndicator from './components/layout/LoadingIndicator'
 import HeaderComponent from './components/layout/HeaderComponent'
 import ThemeContext from './contexts/ThemeContext'
 import useTheme from './hooks/useTheme'
+import Cookies from 'js-cookie'
 
 function App() {
   const [auth, setAuth] = useState(null)
@@ -15,24 +16,31 @@ function App() {
   const [loading, setLoading] = useState(true)
 
   const toggleLocale = () => {
-    localStorage.setItem('locale', (locale === 'id' ? 'en' : 'id'))
-    setLocale((prevLocale) => (prevLocale === 'id' ? 'en' : 'id'))
+    let newLocale
+
+    switch (locale) {
+      case 'id':
+        newLocale = 'en'
+        break
+      case 'en':
+        newLocale = 'ko' // Toggle to Korean
+        break
+      case 'ko':
+        newLocale = 'id' // Toggle back to Indonesian
+        break
+      default:
+        newLocale = 'en'
+    }
+
+    Cookies.set('locale', newLocale)
+    setLocale(newLocale)
   }
 
-  const localeContextValue = useMemo(() => ({
-    locale,
-    toggleLocale
-  }), [locale])
+  const localeContextValue = useMemo(() => ({locale, toggleLocale}), [locale])
 
-  const authContextValue = useMemo(() => ({
-    auth,
-    setAuth
-  }), [auth])
+  const authContextValue = useMemo(() => ({auth, setAuth}), [auth])
 
-  const themeContextValue = useMemo(() => ({
-    theme,
-    changeTheme
-  }), [auth])
+  const themeContextValue = useMemo(() => ({theme, changeTheme}), [auth])
 
   useEffect(() => {
     getUserLogged()
@@ -48,15 +56,16 @@ function App() {
           alert('Error')
         })
 
-    if (localStorage.locale &&
-      ['id', 'en', 'ko'].includes(localStorage.locale)) {
-      setLocale(localStorage.locale)
+    const storedLocale = Cookies.get('locale')
+    if (storedLocale && ['id', 'en', 'ko'].includes(storedLocale)) {
+      setLocale(storedLocale)
     }
 
-    if (localStorage.theme) {
-      changeTheme(localStorage.theme)
+    const storedTheme = Cookies.get('theme')
+    if (storedTheme) {
+      changeTheme(storedTheme)
     } else {
-      localStorage.setItem('theme', 'dark')
+      Cookies.set('theme', 'dark')
       changeTheme('dark')
     }
   }, [])
@@ -67,15 +76,7 @@ function App() {
         <AuthContext.Provider value={authContextValue}>
           <div className="app-container">
             <HeaderComponent />
-            <main>
-              {
-                loading ? (
-                  <LoadingIndicator />
-                ) : (
-                  <Routes />
-                )
-              }
-            </main>
+            <main>{loading ? <LoadingIndicator /> : <Routes />}</main>
           </div>
         </AuthContext.Provider>
       </LocaleContext.Provider>

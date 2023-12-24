@@ -1,11 +1,13 @@
+import Cookies from 'js-cookie'
+
 const BASE_URL = 'https://notes-api.dicoding.dev/v1'
 
 function getAccessToken() {
-  return localStorage.getItem('accessToken')
+  return Cookies.get('accessToken')
 }
 
 function putAccessToken(accessToken) {
-  return localStorage.setItem('accessToken', accessToken)
+  Cookies.set('accessToken', accessToken, {expires: 7})
 }
 
 async function fetchWithToken(url, options = {}) {

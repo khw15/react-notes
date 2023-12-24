@@ -2,15 +2,15 @@ import {useState, useEffect} from 'react'
 import Cookies from 'js-cookie'
 
 function useTheme() {
-  const [theme, setTheme] = useState('dark')
+  // Set the initial theme to either the saved theme or 'dark' as a fallback
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = Cookies.get('theme')
+    return savedTheme || 'dark'
+  })
 
   useEffect(() => {
-    const savedTheme = Cookies.get('theme')
-    if (savedTheme) {
-      setTheme(savedTheme)
-      applyTheme(savedTheme)
-    }
-  }, []) // Run only once on mount
+    applyTheme(theme)
+  }, [theme])
 
   const changeTheme = (val) => {
     setTheme(val)

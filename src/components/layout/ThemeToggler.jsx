@@ -7,7 +7,6 @@ export default function ThemeToggler() {
   const [theme, changeTheme] = useTheme()
 
   useEffect(() => {
-    // Apply the theme on mount
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 

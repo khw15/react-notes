@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import {MdLogout} from 'react-icons/md'
 import AuthContext from '../../contexts/AuthContext'
 import useLanguage from '../../hooks/useLanguage'
+import Cookies from 'js-cookie'
 
 export default function LogoutButton() {
   const {auth} = useContext(AuthContext)
@@ -9,15 +10,14 @@ export default function LogoutButton() {
 
   const handleLogout = () => {
     if (confirm(text.msg.confirm)) {
-      localStorage.removeItem('accessToken')
+      Cookies.remove('accessToken')
       window.location = '/'
     }
   }
 
   return (
     <>
-      {
-      auth ? (
+      {auth ? (
         <button
           type="button"
           title="Logout"
@@ -26,8 +26,9 @@ export default function LogoutButton() {
         >
           <MdLogout />
         </button>
-      ) : ''
-      }
+      ) : (
+        ''
+      )}
     </>
   )
 }

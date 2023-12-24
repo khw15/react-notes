@@ -3,8 +3,7 @@ const appPage = {
     title: 'Dicatatin',
     nav: {
       home: 'Beranda',
-      archives: 'Arsip',
-      korean: '한국어' // Add Korean translation
+      archives: 'Arsip'
     },
     msg: {
       confirm: 'Apakah anda yakin?',
@@ -23,8 +22,7 @@ const appPage = {
     title: 'Dicatatin',
     nav: {
       home: 'Home',
-      archives: 'Archives',
-      korean: '한국어' // Add Korean translation
+      archives: 'Archives'
     },
     msg: {
       confirm: 'Are you sure?',
@@ -43,7 +41,7 @@ const appPage = {
     title: 'Dicatatin',
     nav: {
       home: '홈',
-      archives: '보관함',
+      archives: '보관됨',
       korean: '한국어'
     },
     msg: {
@@ -65,17 +63,26 @@ const loginPage = {
   id: {
     header: 'Login untuk menggunakan Dicatatin',
     footer: 'Belum punya akun?',
-    footerRegisterLink: 'Daftar disini'
+    footerRegisterLink: 'Daftar disini',
+    login: 'Masuk',
+    email: 'Email',
+    password: 'Kata Sandi'
   },
   en: {
     header: 'Login to use app, please.',
     footer: 'Don\'t have an account?',
-    footerRegisterLink: 'Register here'
+    footerRegisterLink: 'Register here',
+    login: 'Login',
+    email: 'Email',
+    password: 'Password'
   },
   ko: {
     header: 'Dicatatin을 사용하려면 로그인하세요.',
     footer: '계정이 없으신가요?',
-    footerRegisterLink: '여기에서 등록'
+    footerRegisterLink: '여기에서 등록',
+    login: '로그인',
+    email: '이메일',
+    password: '비밀번호'
   }
 }
 

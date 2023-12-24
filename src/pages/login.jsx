@@ -40,7 +40,7 @@ export default function LoginPage() {
     <section className="login-page">
       <h2>{textLogin.header}</h2>
       <form className="input-login" onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{ textLogin.email }</label>
         <input
           type="email"
           id="email"
@@ -50,7 +50,7 @@ export default function LoginPage() {
           onChange={onEmailChange}
           required
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{ textLogin.password }</label>
         <input
           type="password"
           id="password"
@@ -60,7 +60,7 @@ export default function LoginPage() {
           onChange={onPasswordChange}
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit">{textLogin.login}</button>
       </form>
       <p className="login-page__footer">
         { textLogin.footer }
