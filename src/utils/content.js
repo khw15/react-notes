@@ -16,7 +16,7 @@ const appPage = {
     archive: 'Arsipkan',
     active: 'Aktifkan',
     back: 'Kembali',
-    pageNotFound: 'Halaman Tidak Ditemukan.'
+    pageNotFound: 'Halaman Tidak Ditemukan'
   },
   en: {
     title: 'Dicatatin',
@@ -55,7 +55,7 @@ const appPage = {
     archive: '보관됨',
     active: '활성화',
     back: '뒤로',
-    pageNotFound: '페이지를 찾을 수 없습니다.'
+    pageNotFound: '페이지를 찾을 수 없습니다'
   }
 }
 
@@ -110,11 +110,11 @@ const registerPage = {
     confirm: 'Confirm Password',
     register: 'Register',
     msg: {
-      registerSuccess: 'User created successfully'
+      registerSuccess: 'Account created successfully'
     }
   },
   ko: {
-    header: '계정을 등록하려면 양식을 작성하세요.',
+    header: '계정을 등록하려면 양식을 작성하세요',
     footer: '이미 계정이 있으신가요?',
     footerLoginLink: '로그인하기',
     name: '이름',
@@ -123,7 +123,7 @@ const registerPage = {
     confirm: '비밀번호 확인',
     register: '회원하기',
     msg: {
-      registerSuccess: '계정이 성공적으로 생성되었습니다. 로그인하세요.'
+      registerSuccess: '계정이 성공적으로 만들어졌습니다'
     }
   }
 }
@@ -131,48 +131,48 @@ const registerPage = {
 const notePage = {
   id: {
     header: 'Catatan Aktif',
-    searchPlaceholder: 'Cari berdasarkan judul ...',
-    empty: 'Tidak ada catatan.'
+    searchPlaceholder: 'Cari berdasarkan judul...',
+    empty: 'Tidak ada catatan'
   },
   en: {
     header: 'Active Notes',
-    searchPlaceholder: 'Search by title ...',
-    empty: 'Empty.'
+    searchPlaceholder: 'Search by title...',
+    empty: 'There are no notes'
   },
   ko: {
     header: '활성 노트',
-    searchPlaceholder: '제목으로 검색 ...',
-    empty: '노트가 없습니다.'
+    searchPlaceholder: '제목으로 검색...',
+    empty: '노트가 없습니다'
   }
 }
 
 const notesNewPage = {
   id: {
     titlePlaceholder: 'Judul',
-    bodyPlaceholder: '<b><i><u>Isi Catatan</u></i></b>',
+    bodyPlaceholder: 'Isi Catatan',
     msgSuccess: 'Berhasil menambahkan catatan!'
   },
   en: {
     titlePlaceholder: 'Title',
-    bodyPlaceholder: '<b><i><u>Notes Content</u></i></b>',
+    bodyPlaceholder: 'Notes Content',
     msgSuccess: 'Successfully add notes!'
   },
   ko: {
     titlePlaceholder: '제목',
-    bodyPlaceholder: '<b><i><u>노트 내용</u></i></b>',
+    bodyPlaceholder: '내용하기',
     msgSuccess: '노트가 성공적으로 추가되었습니다!'
   }
 }
 
 const notesIdPage = {
   id: {
-    notFound: 'Catatan tidak ditemukan.'
+    notFound: 'Catatan tidak ditemukan'
   },
   en: {
-    notFound: 'Not Found.'
+    notFound: 'Note not found'
   },
   ko: {
-    notFound: '노트를 찾을 수 없습니다.'
+    notFound: '노트를 찾을 수 없습니다'
   }
 }
 
