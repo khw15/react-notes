@@ -5,72 +5,103 @@ import {HiArrowLeft} from 'react-icons/hi'
 import {showFormattedDate} from '../../utils'
 import {
   archiveNote, deleteNote, getNote, unarchiveNote
-} from '../../utils/local-data'
+} from '../../utils/network-data'
 import NotesIdPageAction from '../../components/notes/NotesIdPageAction'
 import NotFoundMessage from '../../components/layout/NotFoundMessage'
+import LoadingIndicator from '../../components/layout/LoadingIndicator'
+import useLanguage from '../../hooks/useLanguage'
 
 export default function NotesIdPages() {
+  const [loading, setLoading] = useState(true)
   const [note, setNote] = useState({})
   const {id} = useParams()
+  const textApp = useLanguage('app')
+  const textNote = useLanguage('notesId')
   const navigate = useNavigate()
 
-  const handleEdit = () => {
-    navigate(`/notes/${id}/edit`)
-  }
-
   const handleArchive = () => {
-    if (note.archived) {
-      unarchiveNote(id)
-      navigate('/archives')
-    } else {
-      archiveNote(id)
-      navigate('/')
+    if (confirm(textApp.msg.confirm)) {
+      let methods = null
+      let navigateTo = '/'
+      if (note.archived) {
+        methods = unarchiveNote(id)
+        navigateTo = '/archives'
+      } else {
+        methods = archiveNote(id)
+      }
+      methods
+          .then((res) => {
+            if (!res.error) {
+              navigate(navigateTo)
+            }
+          })
+          .catch(() => {
+            alert(textApp.msg.error)
+          })
     }
   }
 
   const handleDelete = () => {
-    deleteNote(id)
-    navigate('/')
+    if (confirm(textApp.msg.confirm)) {
+      deleteNote(id).then((res) => {
+        if (!res.error) {
+          navigate('/')
+        }
+      })
+          .catch(() => {
+            alert(textApp.msg.error)
+          })
+    }
   }
 
   useEffect(() => {
-    const showNote = getNote(id)
-    if (showNote) {
-      setNote(showNote)
-    }
+    /**
+     * show notes
+     */
+    getNote(id)
+        .then((res) => {
+          if (!res.error) {
+            setNote(res.data)
+          } else {
+            alert(textNote.notFound)
+          }
+          setLoading(false)
+        })
+        .catch(() => {
+          alert(textApp.msg.error)
+        })
   }, [])
 
   return (
     <section className="detail-page">
-      {'id' in note ? (
+      { ('id' in note && !loading) ? (
         <>
           <Link
             to="/"
-            title="Back"
+            title={textApp.back}
           >
             <HiArrowLeft />
             {' '}
-            Back
+            { textApp.back }
           </Link>
           <h3 className="detail-page__title">
-            {note.title}
+            { note.title }
           </h3>
           <p className="detail-page__createdAt">
             {showFormattedDate(note.createdAt)}
           </p>
           <div className="detail-page__body">
-            {parser(note.body)}
+            { parser(note.body) }
           </div>
+          <NotesIdPageAction
+            archived={note.archived || false}
+            handleArchive={handleArchive}
+            handleDelete={handleDelete}
+          />
         </>
-      ) : (
-        <NotFoundMessage />
-      )}
-      <NotesIdPageAction
-        archived={note.archived || false}
-        handleEdit={handleEdit}
-        handleArchive={handleArchive}
-        handleDelete={handleDelete}
-      />
+      ) : ''}
+      {(!('id' in note) && !loading) ? <NotFoundMessage /> : ''}
+      {loading ? <LoadingIndicator /> : ''}
     </section>
   )
 }

@@ -3,7 +3,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .detail-page__title {
+  .detail-page__title { 
     font-size: 64px;
   }
 }

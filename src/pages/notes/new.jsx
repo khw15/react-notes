@@ -7,46 +7,40 @@ import {
 import draftToHtml from 'draftjs-to-html'
 import AddNewPageAction from '../../components/notes/AddNewPageAction'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import {addNote} from '../../utils/local-data'
-import Swal from 'sweetalert2'
+import {addNote} from '../../utils/network-data'
+import useInput from '../../hooks/useInput'
+import useLanguage from '../../hooks/useLanguage'
 
 export default function NotesNewPages() {
+  const textApp = useLanguage('app')
+  const textNote = useLanguage('notesNew')
   const navigate = useNavigate()
 
-  const [form, setForm] = useState({
-    title: '',
-    body: EditorState.createWithContent(
-        ContentState.createFromBlockArray(
-            convertFromHTML('<b><i>Your notes here...</i></b>')
-        )
-    )
-  })
-
-  const handleChange = (e) => {
-    setForm((data) => ({...data, title: e.target.value}))
-  }
+  const [title, setTitle] = useInput('')
+  const [body, setBody] = useState(
+      EditorState.createWithContent(
+          ContentState.createFromBlockArray(
+              convertFromHTML(textNote.bodyPlaceholder)
+          )
+      )
+  )
 
   const onEditorStateChange = (body) => {
-    setForm((data) => ({...data, body}))
+    setBody(body)
   }
 
   const handleSave = () => {
-    const {title} = form
-    const body = draftToHtml(convertToRaw(form.body.getCurrentContent()))
-    addNote({title, body})
-    navigate('/')
-
-    const successToast = Swal.mixin({
-      toast: true,
-      position: 'bottom-start',
-      showConfirmButton: false,
-      timer: 1500
-    })
-
-    successToast.fire({
-      icon: 'success',
-      title: 'Note Saved!'
-    })
+    const bodyParsed = draftToHtml(convertToRaw(body.getCurrentContent()))
+    addNote({title, body: bodyParsed})
+        .then((res) => {
+          if (!res.error) {
+            alert(textNote.msgSuccess)
+            navigate('/')
+          }
+        })
+        .catch(() => {
+          alert(textApp.msg.error)
+        })
   }
 
   return (
@@ -54,12 +48,12 @@ export default function NotesNewPages() {
       <div className="add-new-page__input">
         <input
           className="add-new-page__input__title"
-          placeholder="Title"
-          value={form.title}
-          onChange={handleChange}
+          placeholder={textNote.titlePlaceholder}
+          value={title}
+          onChange={setTitle}
         />
         <Editor
-          editorState={form.body}
+          editorState={body}
           toolbarClassName="toolbarClassName"
           wrapperClassName="wrapperClassName"
           editorClassName="editorClassName"

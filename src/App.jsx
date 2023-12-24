@@ -1,37 +1,85 @@
-import React from 'react'
-import {
-  Link, Navigate, Route, Routes
-} from 'react-router-dom'
-
-import IndexPage from './pages'
-import NotFoundPages from './pages/not-found'
-import ArchivesPage from './pages/archives'
-import NotesIdPages from './pages/notes/_id'
-import NotesNewPages from './pages/notes/new'
-import NavMenu from './components/layout/NavMenu'
-import NotesIdEditPages from './pages/notes/_id-edit'
+import React, {useEffect, useMemo, useState} from 'react'
+import Routes from './routes'
+import LocaleContext from './contexts/LocaleContext'
+import AuthContext from './contexts/AuthContext'
+import {getUserLogged} from './utils/network-data'
+import LoadingIndicator from './components/layout/LoadingIndicator'
+import HeaderComponent from './components/layout/HeaderComponent'
+import ThemeContext from './contexts/ThemeContext'
+import useTheme from './hooks/useTheme'
 
 function App() {
+  const [auth, setAuth] = useState(null)
+  const [locale, setLocale] = useState('id')
+  const [theme, changeTheme] = useTheme()
+  const [loading, setLoading] = useState(true)
+
+  const toggleLocale = () => {
+    localStorage.setItem('locale', (locale === 'id' ? 'en' : 'id'))
+    setLocale((prevLocale) => (prevLocale === 'id' ? 'en' : 'id'))
+  }
+
+  const localeContextValue = useMemo(() => ({
+    locale,
+    toggleLocale
+  }), [locale])
+
+  const authContextValue = useMemo(() => ({
+    auth,
+    setAuth
+  }), [auth])
+
+  const themeContextValue = useMemo(() => ({
+    theme,
+    changeTheme
+  }), [auth])
+
+  useEffect(() => {
+    getUserLogged()
+        .then((res) => {
+          if (!res.error) {
+            setAuth(res.data)
+          } else {
+            setAuth(null)
+          }
+          setLoading(false)
+        })
+        .catch(() => {
+          alert('Error')
+        })
+
+    if (localStorage.locale &&
+      ['id', 'en', 'ko'].includes(localStorage.locale)) {
+      setLocale(localStorage.locale)
+    }
+
+    if (localStorage.theme) {
+      changeTheme(localStorage.theme)
+    } else {
+      localStorage.setItem('theme', 'dark')
+      changeTheme('dark')
+    }
+  }, [])
+
   return (
-    <div className="app-container">
-      <header>
-        <h1>
-          <Link to="/">Dicatatin</Link>
-        </h1>
-        <NavMenu />
-      </header>
-      <main>
-        <Routes>
-          <Route path="/" element={<IndexPage />} />
-          <Route path="/archives" element={<ArchivesPage />} />
-          <Route path="/notes" element={<Navigate to="/" replace />} />
-          <Route path="/notes/new" element={<NotesNewPages />} />
-          <Route path="/notes/:id" element={<NotesIdPages />} />
-          <Route path="/notes/:id/edit" element={<NotesIdEditPages />} />
-          <Route path="*" element={<NotFoundPages />} />
-        </Routes>
-      </main>
-    </div>
+    <ThemeContext.Provider value={themeContextValue}>
+      <LocaleContext.Provider value={localeContextValue}>
+        <AuthContext.Provider value={authContextValue}>
+          <div className="app-container">
+            <HeaderComponent />
+            <main>
+              {
+                loading ? (
+                  <LoadingIndicator />
+                ) : (
+                  <Routes />
+                )
+              }
+            </main>
+          </div>
+        </AuthContext.Provider>
+      </LocaleContext.Provider>
+    </ThemeContext.Provider>
   )
 }
 

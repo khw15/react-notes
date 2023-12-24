@@ -1,41 +1,64 @@
 import React, {useEffect, useState} from 'react'
 import HomepageAction from '../components/index/HomePageAction'
+import LoadingIndicator from '../components/layout/LoadingIndicator'
 import NoteListEmpty from '../components/notes/NoteListEmpty'
 import NotesList from '../components/notes/NotesList'
-import {getActiveNotes} from '../utils/local-data'
+import useInput from '../hooks/useInput'
+import useLanguage from '../hooks/useLanguage'
+import {getActiveNotes} from '../utils/network-data'
 
 export default function IndexPage() {
+  const [dataNotes, setDataNotes] = useState([])
+  const [initNotes, setInitNotes] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [notes, setNotes] = useState([])
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useInput('')
+  const textApp = useLanguage('app')
+  const textNote = useLanguage('note')
 
-  const handleSearch = (e) => {
-    setSearch(e.target.value)
+  const initNotesFromApi = () => {
+    getActiveNotes()
+        .then((res) => {
+          if (!res.error) {
+            setDataNotes(res.data)
+            setNotes(res.data)
+            setInitNotes(true)
+            setLoading(false)
+          }
+        })
+        .catch(() => {
+          alert(textApp.msg.error)
+        })
   }
 
   useEffect(() => {
-    if (search !== '') {
-      setNotes(
-          getActiveNotes()
-              .filter((note) => note.title.toLowerCase()
-                  .includes(search.toLowerCase()))
-      )
-    } else {
-      setNotes(getActiveNotes())
+    if (!initNotes) {
+      initNotesFromApi()
+    }
+
+    if (initNotes) {
+      let tempDataNotes = [...dataNotes]
+      if (search !== '') {
+        tempDataNotes = tempDataNotes.filter((note) =>
+          note.title.toLowerCase().includes(search.toLowerCase()))
+      }
+      setNotes(tempDataNotes)
     }
   }, [search])
   return (
     <section className="homepage">
-      <h2>Active Notes</h2>
+      <h2>{ textNote.header }</h2>
       <section className="search-bar">
         <input
           type="text"
-          placeholder="Search for notes..."
+          placeholder={textNote.searchPlaceholder}
           value={search}
-          onChange={handleSearch}
+          onChange={setSearch}
         />
       </section>
-      {notes.length > 0 && <NotesList notes={notes} />}
-      {notes.length === 0 && <NoteListEmpty />}
+      {(notes.length > 0 && !loading) ? <NotesList notes={notes} /> : ''}
+      {(notes.length === 0 && !loading) ? <NoteListEmpty /> : ''}
+      {loading ? <LoadingIndicator /> : ''}
       <HomepageAction />
     </section>
   )
