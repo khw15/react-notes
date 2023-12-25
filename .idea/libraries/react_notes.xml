@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="react-notes">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/react-notes.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
