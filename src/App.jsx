@@ -29,6 +29,9 @@ function App() {
         newLocale = 'ja' // Toggle back to Indonesian
         break
       case 'ja':
+        newLocale = 'zh' // Toggle back to English
+        break
+      case 'zh':
         newLocale = 'id' // Toggle back to English
         break
       default:

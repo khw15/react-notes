@@ -139,6 +139,43 @@ const appPage = {
     unarchiveTitle: 'ノートのアクティブ化',
     unarchiveText: 'このノートをアクティブにしてもよろしいですか？',
     confirmUnarchiveButtonText: 'アクティブにする'
+  },
+  zh: {
+    title: 'Dicatatin',
+    nav: {
+      home: '家',
+      archives: '档案'
+    },
+    msg: {
+      confirm: '你确定吗？',
+      yes: '登出',
+      no: '取消',
+      loading: '正在加载...',
+      error: '错误。稍后再试。'
+    },
+    add: '加',
+    cancel: '取消',
+    delete: '删除',
+    archive: '存档',
+    active: '活性',
+    back: '背部',
+    pageNotFound: '找不到网页',
+    // Swal for delete
+    deleteTitle: '删除笔记',
+    deleteText: '您确定要删除此笔记吗？',
+    confirmDeleteButtonText: '删除',
+    cancelCancelButtonText: '取消',
+    successDelete: '成功删除笔记！',
+    // Swal for archive
+    archiveTitle: '存档笔记',
+    archiveText: '您确定要存档此笔记吗？',
+    confirmArchiveButtonText: '存档',
+    cancelArchiveButtonText: '取消',
+    successArchive: '成功存档笔记！',
+    // Swal for unarchive
+    unarchiveTitle: '激活笔记',
+    unarchiveText: '您确定要激活此笔记吗？',
+    confirmUnarchiveButtonText: '激活'
   }
 }
 
@@ -178,6 +215,15 @@ const loginPage = {
     email: '電子メール',
     password: 'パスワード',
     loading: '読み込み中...'
+  },
+  zh: {
+    header: '登录以使用Dicatatin',
+    footer: '没有帐号？',
+    footerRegisterLink: '注册',
+    login: '登录',
+    email: '电子邮件',
+    password: '密码',
+    loading: '正在加载...'
   }
 }
 
@@ -241,6 +287,21 @@ const registerPage = {
       registerSuccess: 'アカウント作成成功',
       confirmPasswordMismatch: 'パスワードが一致しません'
     }
+  },
+  zh: {
+    header: '填写整个表格以创建帐户',
+    footer: '已经有帐号了？',
+    footerLoginLink: '在这里登录',
+    name: '名称',
+    email: '电子邮件',
+    password: '密码',
+    confirm: '确认密码',
+    register: '寄存器',
+    loading: '正在加载...',
+    msg: {
+      registerSuccess: '帐户创建成功',
+      confirmPasswordMismatch: '密码不匹配'
+    }
   }
 }
 
@@ -264,6 +325,11 @@ const notePage = {
     header: 'アクティブノート',
     searchPlaceholder: 'タイトルで検索...',
     empty: 'ノートはありません'
+  },
+  zh: {
+    header: '活跃笔记',
+    searchPlaceholder: '按标题搜索...',
+    empty: '没有笔记'
   }
 }
 
@@ -291,6 +357,12 @@ const notesNewPage = {
     bodyPlaceholder: 'ノートの内容',
     addTitle: 'ノートが正常に追加されました',
     addErrorTitle: 'ノートの追加に失敗しました'
+  },
+  zh: {
+    titlePlaceholder: '标题',
+    bodyPlaceholder: '笔记内容',
+    addTitle: '笔记成功添加',
+    addErrorTitle: '笔记添加失败'
   }
 }
 
@@ -306,6 +378,9 @@ const notesIdPage = {
   },
   ja: {
     notFound: 'ノートが見つかりません'
+  },
+  zh: {
+    notFound: '找不到笔记'
   }
 }
 
@@ -321,6 +396,9 @@ const archivePage = {
   },
   ja: {
     header: 'アーカイブされたノート'
+  },
+  zh: {
+    header: '已归档笔记'
   }
 }
 

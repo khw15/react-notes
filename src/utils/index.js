@@ -15,7 +15,8 @@ const showFormattedDate = (date) => {
     id: 'id-ID',
     ko: 'ko-KR',
     ja: 'ja-JP',
-    en: 'en-US'
+    en: 'en-US',
+    zh: 'zh-CN'
   }
 
   const localeString = localeMappings[locale] || 'en-US'
